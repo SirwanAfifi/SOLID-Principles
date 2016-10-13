@@ -6,7 +6,8 @@ namespace LSP.Controllers
 {
     public class HomeController : Controller
     {
-        List<ISettings> settings = new List<ISettings>();
+        List<IReadableSettings> readableSettings = new List<IReadableSettings>();
+        List<IWritableSettings> writableSettings = new List<IWritableSettings>();
 
         public HomeController()
         {
@@ -15,15 +16,19 @@ namespace LSP.Controllers
             UserSettings u = new UserSettings();
             GuestSettings gu = new GuestSettings();
 
-            settings.Add(g);
-            settings.Add(s);
-            settings.Add(u);
-            settings.Add(gu);
+            readableSettings.Add(g);
+            readableSettings.Add(s);
+            readableSettings.Add(u);
+            readableSettings.Add(gu);
+
+            writableSettings.Add(g);
+            writableSettings.Add(s);
+            writableSettings.Add(u);
         }
 
         public IActionResult Index()
         {
-            var allSettings = SettingsHelper.GetAllSettings(settings);
+            var allSettings = SettingsHelper.GetAllSettings(readableSettings);
             return View(allSettings);
         }
 
@@ -46,9 +51,8 @@ namespace LSP.Controllers
             newSettings.Add(app);
             newSettings.Add(sec);
             newSettings.Add(usr);
-            newSettings.Add(gst);
 
-            List<string> model = SettingsHelper.SetAllSettings(settings, newSettings);
+            List<string> model = SettingsHelper.SetAllSettings(writableSettings, newSettings);
 
             return View(model);
         }

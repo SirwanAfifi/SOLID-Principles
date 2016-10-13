@@ -2,9 +2,8 @@
 
 namespace LSP.Core
 {
-    public interface ISettings
+    public interface IReadableSettings
     {
         Dictionary<string, string> GetSettings();
-        string SetSettings(Dictionary<string, string> settings);
     }
 }

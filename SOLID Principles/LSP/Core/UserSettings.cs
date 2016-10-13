@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace LSP.Core
 {
-    public class UserSettings : ISettings
+    public class UserSettings : IReadableSettings, IWritableSettings
     {
-        public Dictionary<string, string> GetStrings()
+        public Dictionary<string, string> GetSettings()
         {
             var settings = new Dictionary<string, string>
             {
@@ -14,7 +14,7 @@ namespace LSP.Core
             return settings;
         }
 
-        public string SetStrings(Dictionary<string, string> settings)
+        public string SetSettings(Dictionary<string, string> settings)
         {
             foreach (var item in settings)
             {
