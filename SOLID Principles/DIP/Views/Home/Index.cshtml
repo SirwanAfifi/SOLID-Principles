@@ -1,0 +1,12 @@
+﻿<h1>Change Password</h1>
+
+<strong>Send notifications by:</strong>
+
+<form asp-action="ChangePassword" method="post">
+    <select name="notificationType">
+        <option value="email">Email</option>
+        <option value="sms">SMS</option>
+        <option value="popup">Popup</option>
+    </select>
+    <input type="submit" value="Change Password" />
+</form>
